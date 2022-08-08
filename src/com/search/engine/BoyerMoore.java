@@ -7,11 +7,12 @@ public class BoyerMoore {
 
 	private static void badCharHeuristic( char []str, int size) { 
 		for (int i = 0; i < size; i++) 
-			badchar.put(str[i], i);  // Put the each character and its index into the hash map
+			badchar.put(str[i], i);  // Put each character and its index into the hash map
   	} 
 
 
-	public static int searchCount( String data,  String pattern) {
+	public static int searchCount( String data,  String pattern) // method for search count
+	{
 		return searchCount(data.toCharArray(), pattern.toCharArray());
 
 	}
@@ -23,8 +24,8 @@ public class BoyerMoore {
 		badCharHeuristic(pat, pattern_length);
 
 		int s = 0; 
-		int counter=0;   // This varible is for kepping the track of occurence of the word
-		while(s <= (text_length - pattern_length)) // 
+		int counter=0;   // This varible is for keeping the track of occurance of the word
+		while(s <= (text_length - pattern_length)) 
 		{
 			int j = pattern_length-1;
 
@@ -43,7 +44,7 @@ public class BoyerMoore {
   
        public static void main(String []args) { 
           
-         // Testing 
+         // Testing code
     	 String data = "ab ab"; 
          String pat = "ab"; 
          System.out.println(searchCount(data, pat)); 

@@ -86,7 +86,7 @@ public class Application {
                 if (word.equals("quit")) {
                 	System.out.println("terminated");
                 	break;}
-                FrequencyList.clear();   // It will clear the occurence of the word data in the previous search
+                FrequencyList.clear();   // It will clear the occurance of the word data in the previous search
                 int totalFiles = 0;
                 for (File file: new File(Settings.TEXT_PATH).listFiles()) {
                 	if (isWordFound(file, word))
