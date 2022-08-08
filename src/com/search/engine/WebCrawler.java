@@ -38,14 +38,19 @@ public class WebCrawler {
         if (!urls.contains(url) && depth < Settings.MAX_DEPTH) {
             System.out.printf("[%d]: %s\n", urls.size(), url);
             try {
+                int i=0;
                 Document document = Jsoup.connect(url).get();
                 String fileName = document.title().toString().replace(" ", "_").replace("|", "_"); 
                 saveToHtml(document.text(), fileName);
                 saveToText(url + Settings.DELIMITER + document.text(), fileName);
                 urls.add(url);
                 for (Element page: document.select("a[href]")) {
+                    i++;
                     String link = page.attr("abs:href");
                     startCrawler(link, depth+1);
+                    if(i>10){
+                        break;
+                    }
                 }
             } catch(java.net.UnknownHostException| org.jsoup.HttpStatusException e) {
             }catch (Exception e) {
